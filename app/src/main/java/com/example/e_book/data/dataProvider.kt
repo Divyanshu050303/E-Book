@@ -190,7 +190,4 @@ var bookImageList= listOf(
     dataProviderToCard(name = "Miracle_A_Year_of_Food_Life.pdf",bookImage = R.drawable.miracle_a_year_of_food_life_image,"Miracle"),
     dataProviderToCard(name = "The_War_of_Art_Break.pdf",bookImage = R.drawable.the_war_of_art_break_image,"War of Art Break"),
 )
-var favorite= listOf(
-    dataProviderToCard(name = "From_Failure_to_Success_ Everyday_Habits_and_Exercises.pdf", bookImage = R.drawable.failure, "From Failure to Success")
-)
-var download= listOf(dataProviderToCard(name = "The_War_of_Art_Break.pdf",bookImage = R.drawable.the_war_of_art_break_image,"War of Art Break"))
+

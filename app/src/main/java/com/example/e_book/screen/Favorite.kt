@@ -24,7 +24,7 @@ import coil.compose.rememberAsyncImagePainter
 import com.example.e_book.BottomNavigation
 import com.example.e_book.R
 import com.example.e_book.data.dataProviderToCard
-import com.example.e_book.data.favorite
+
 import com.google.gson.Gson
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -53,8 +53,7 @@ fun Favorite(navController:NavController) {
                 )
                 {
                     items(items = favorite) { item ->
-                        AlingmentFavoriteBook(item.image,
-                            Modifier.clickable { navigateToBookList(item) })
+                        AlingmentFavoriteBook(item.image)
                     }
                 }
             }
@@ -62,14 +61,14 @@ fun Favorite(navController:NavController) {
     }
 }}
 @Composable
-fun AlingmentFavoriteBook(image:Int, modifier: Modifier) {
+fun AlingmentFavoriteBook(image:Int ) {
 
         Card(Modifier
             .padding(vertical = 8.dp, horizontal = 17.dp)
             .height(190.dp)
             .width(30.dp)
             , elevation = 4.dp , backgroundColor = Color.LightGray) {
-            Image(painter = rememberAsyncImagePainter(model = image), contentDescription ="Image" , contentScale = ContentScale.FillBounds, modifier = modifier
+            Image(painter = rememberAsyncImagePainter(model = image), contentDescription ="Image" , contentScale = ContentScale.FillBounds, modifier = Modifier
                 .height(150.dp)
                 .width(50.dp)
             )

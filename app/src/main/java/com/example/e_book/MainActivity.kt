@@ -3,6 +3,7 @@ package com.example.e_book
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.RequiresApi
@@ -28,7 +29,7 @@ import com.example.e_book.`class`.Screens
 import com.example.e_book.`class`.firebaseDataFile
 import com.example.e_book.data.dataProvider
 import com.example.e_book.data.dataProviderToCard
-import com.example.e_book.data.favorite
+
 import com.example.e_book.screen.*
 import com.example.e_book.ui.theme.EBookTheme
 import com.google.firebase.auth.ktx.auth
@@ -36,6 +37,7 @@ import com.google.firebase.ktx.Firebase
 import com.google.gson.Gson
 
 class MainActivity : ComponentActivity() {
+    private var pressedTime: Long = 0
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +47,20 @@ class MainActivity : ComponentActivity() {
                     SastaSpotity()
                 }
             }
+        }}
+        @Deprecated("Deprecated in Java")
+        @RequiresApi(Build.VERSION_CODES.M)
+        override fun onBackPressed() {
+            // on below line we are checking if the press time is greater than 2 sec
+            if (pressedTime + 2000 > System.currentTimeMillis()) {
+                // if time is greater than 2 sec we are closing the application.
+                finish()
+            } else {
+                // in else condition displaying a toast message.
+                Toast.makeText(getBaseContext(), "Press back again to exit", Toast.LENGTH_SHORT).show();
+            }
+            // on below line initializing our press time variable
+            pressedTime = System.currentTimeMillis();
         }
     }
 
@@ -78,11 +94,9 @@ class MainActivity : ComponentActivity() {
             composable(BottomNavItem.Download.screen_route) {
                 Download(navController)
             }
-            composable(BottomNavItem.Audio.screen_route) {
-                Audio()
-            }
+
             composable(BottomNavItem.Setting.screen_route) {
-                Setting(navController = navController)
+                Setting(navController)
             }
             composable(Screen.Profile.toString()) {
                 ProfileScreen(navController = navController)
@@ -98,9 +112,6 @@ class MainActivity : ComponentActivity() {
             composable(Screen.SignUp.toString()) {
                 SignUp(navController)
 
-            }
-            composable(Screen.Setting.toString()) {
-                Setting(navController = navController)
             }
             composable("bookList/{book}", arguments = listOf(navArgument("book"){
                 type= NavType.StringType
@@ -144,7 +155,7 @@ class MainActivity : ComponentActivity() {
             }
             }
         }
-    }}
+    }
 
 @Composable
  fun BottomNavigation(

@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.drawable.toIcon
 import androidx.navigation.NavController
@@ -52,11 +53,13 @@ fun ProfileScreen(  navController: NavController){
                 .padding(8.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(text = "Cancel",
-                modifier = Modifier.clickable { notification.value = "Cancelled" }.clickable (onClick = {navController.navigate(
-                    BottomNavItem.Setting.screen_route)}))
-            Text(text = "Save",
-                modifier = Modifier.clickable { notification.value = "Profile updated" })
+            Image(painter = painterResource(id = R.drawable.prev),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(70.dp)
+                    .padding(horizontal = 15.dp)
+                    .clickable(onClick = { navController.navigate(BottomNavItem.Setting.screen_route) })
+            )
         }
         ProfileImage()
         Row(

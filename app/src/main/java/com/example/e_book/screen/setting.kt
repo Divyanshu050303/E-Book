@@ -19,7 +19,7 @@ import com.example.e_book.`class`.Screen
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Setting(modifier: Modifier = Modifier, navController: NavController) {
+fun Setting( navController: NavController) {
     Scaffold(bottomBar = { com.example.e_book.BottomNavigation(navController = navController) }) {
         Box{
             Image(painter = painterResource(id = R.drawable.back2),

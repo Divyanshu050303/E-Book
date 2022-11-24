@@ -31,10 +31,10 @@ import com.example.e_book.`class`.BottomNavItem
 import com.example.e_book.data.*
 import com.github.barteksc.pdfviewer.PDFView
 
-//var favourites = listOf<dataProviderToCard>()
+var favorite = listOf<dataProviderToCard>()
 
 
-//var download = listOf<dataProviderToCard>()
+var download = listOf<dataProviderToCard>()
 var down by mutableStateOf(false)
 //var isPressed=Ins
 
@@ -63,6 +63,7 @@ fun PdfVieweroffline(navController: NavController, book: dataProviderToCard){
             IconToggleButton(checked = fav, onCheckedChange ={
                 if(favorite.contains(book)){
                     favorite= favorite.toMutableList().also { it.remove(book) }
+                    fav=!fav
                 }
                 else{
                     favorite= favorite+book

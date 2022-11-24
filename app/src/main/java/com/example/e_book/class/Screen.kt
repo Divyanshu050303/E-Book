@@ -9,8 +9,6 @@ sealed class Screen() {
 
     object Profile:Screen()
     object About:Screen()
-    object Setting:Screen()
-    object MoreBook:Screen()
     object SignIn:Screen()
     object SignUp:Screen()
 
@@ -20,7 +18,6 @@ sealed class BottomNavItem(var title:String, var icon:Int, var screen_route:Stri
 
     object Home : BottomNavItem("Home", R.drawable.home,"home")
     object Favorite: BottomNavItem("Favorite",R.drawable.favorite,"Favorite")
-    object Audio: BottomNavItem("Audio",R.drawable.audio,"Audio")
     object Download: BottomNavItem("Download",R.drawable.download,"Download")
     object Setting: BottomNavItem("Setting",R.drawable.settings,"Setting")
 }
